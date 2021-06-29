@@ -1,0 +1,32 @@
+apply plugin: 'com.android.library'
+apply plugin: 'bintray-release'
+
+android {
+    compileSdkVersion versions.androidSdk.compile
+
+    defaultConfig {
+        minSdkVersion versions.androidSdk.min
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation libraries.appcompat
+
+    testImplementation libraries.jUnit
+    testImplementation libraries.mockitoCore
+    testImplementation libraries.assertJAndroid
+}
+
+publish {
+    userOrg = artifactsPublish.userOrg
+    groupId = artifactsPublish.groupId
+    artifactId = 'accessibilitools'
+    publishVersion = artifactsPublish.version
+    desc = 'Tools to help implement accessibility features on Android'
+    website = artifactsPublish.website
+}
